@@ -11,6 +11,7 @@ Por lo tanto la funcion a implementar es:
             {        ... + F(n-25) + F(n-30)    si n > 30
 
 """
+import time
 import sys
 
 # Funcion recursiva basada en la definicion
@@ -95,15 +96,37 @@ def FI(n):
 
 # Script de Demostracion
 def main():
-    n = int(input("Ingrese el numero a calcular F6,5\n>> "))
+    (input("A continuacion se haran unas pruebas de rendimiento\nEnter para Continuar >> "))
+    print("Midiendo Tiempos...")
     # Que tristeza que python no optimice las 
     # recursiones de cola :')
-    print( F(n) )
-    print( FT(n) )
-    print( FI(n) )
+    
+    pruebas = [ 60, 80, 100, 120, 130, 140, 150, 170 ]
+    tiempos_recursion = []
+    tiempos_cola = []
+    tiempos_iterativo = []
+    
+    for i in pruebas:
+        inicio = time.time()
+        F(i)
+        tiempos_recursion.append(time.time()-inicio)
+        inicio = time.time()
+        FT(i)
+        tiempos_cola.append(time.time()-inicio)
+        inicio = time.time()
+        FI(i)
+        tiempos_iterativo.append(time.time()-inicio)
+
+    print("\nPruebas: ", pruebas)
+    print("\nTiempos:")
+    print("\nIterativo: ", tiempos_iterativo)
+    print("\nRecursion de Cola: ", tiempos_cola)
+    print("\nRecursion Simple: ", tiempos_recursion)
+
+
 
 
 # Ejecutamos un script de demostracion
 if __name__ == '__main__':
-    
+    sys.setrecursionlimit(5000)
     main()
