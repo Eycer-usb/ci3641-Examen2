@@ -32,7 +32,7 @@ def parentesis(n):
                             indice += 1
 
                     # Si no se ha retornado antes la posible distribucion
-                    # obtenida, se retorna y se al llamador y se
+                    # obtenida, se retorna y al llamador y se
                     # continua con el calculo del siguiente elemento
                     respuesta_posible = "".join(respuesta_posible)
                     if (not (respuesta_posible in memoria) ):
